@@ -1,0 +1,38 @@
+
+
+
+
+1// Le sens des variables xij
+
+Pour tout couple (i,j) de ville, xij represente un arc (un cable si l'on veut) de la ville i vers la ville j.
+x = 1 si l'arc existe (si x est solution)
+x = 0 sinon
+
+2// Le sens des variables ui
+
+Pour toute ville sauf la première on a le numéro de la ville moins 1.
+
+3// Les quatres contraintes
+
+Les deux premières contres sur xij ont pour but de n'autoriser qu'un unique arc entrant et qu'un unique arc sortant pour chaque ville.
+Pour chaque i fixé on fait la somme de tous les arcs possibles entrants par i et on exige par l'égalité à 1 qu'un seul de tous ces arcs puissent exister.
+De manière analogue, On fixe j et on réitère l'opération.
+on fait attention à ne pas ajouter à la somme les arcs x (i=j) une ville ne peut être connecté à elle-même.
+
+La troisième contrainte 
+u(i)-u(j) +n*x(i,j)<=n-1
+
+Cette contrainte s'assure que les arcs vont dans le bon sens, à savoir, un arc doit connecter une ville avec un numéro plus grand que sa ville de départ sinon la partie droite de l'inégalité dépasse (n-1) (dans le cas x=1).
+
+La quatrième contrainte s'assure que les variables u ne comprennent pas la première ville. 
+Cette exclusion s'explique par l'impossibilité de l'arc entre la dernière et première ville de respecter la troisième contrainte, arc pourtant nécessaire pour compléter le réseau.
+
+4// La fonction objective
+
+La fonction objective cherche à minimiser la somme de tous les arcs x(i,j) multipliés chacun par leur coefficient c qui est la distance euclidienne entre i et j.
+La fonction objective a pour but de réduire la taille du réseau.
+
+
+Afin de compiler et lancer la partie 2,
+il suffit de taper "make" dans le terminal.
+
